@@ -1,3 +1,8 @@
+require("dotenv").config();
+
+console.log("TOKEN LENGTH:", process.env.TOKEN?.length);
+console.log("TOKEN START:", process.env.TOKEN?.substring(0, 30));
+
 const axios = require("axios");
 const fs = require("fs");
 require("dotenv").config();
