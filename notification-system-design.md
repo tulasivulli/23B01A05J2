@@ -139,3 +139,78 @@ Content-Type: application/json
 ### Real-Time Notifications
 
 Use WebSocket connections so that students receive notifications instantly without refreshing the page.
+
+## Stage 2
+
+### Database Choice
+
+I would use PostgreSQL because notifications require strong consistency, indexing support, reliable querying, and transactional guarantees.
+
+### Database Schema
+
+#### Students Table
+
+| Column     | Type               |
+| ---------- | ------------------ |
+| student_id | BIGINT PRIMARY KEY |
+| name       | VARCHAR(100)       |
+| email      | VARCHAR(255)       |
+
+#### Notifications Table
+
+| Column          | Type             |
+| --------------- | ---------------- |
+| notification_id | UUID PRIMARY KEY |
+| type            | VARCHAR(20)      |
+| message         | TEXT             |
+| created_at      | TIMESTAMP        |
+
+#### Student_Notifications Table
+
+| Column          | Type                  |
+| --------------- | --------------------- |
+| id              | BIGSERIAL PRIMARY KEY |
+| student_id      | BIGINT                |
+| notification_id | UUID                  |
+| is_read         | BOOLEAN               |
+| read_at         | TIMESTAMP             |
+
+### Relationships
+
+* One student can receive many notifications.
+* One notification can be delivered to many students.
+* Student_Notifications acts as a junction table.
+
+### Scaling Problems
+
+As the number of students and notifications grows:
+
+1. Large table scans become expensive.
+2. Read latency increases.
+3. Storage requirements increase significantly.
+4. Notification retrieval becomes slower.
+
+### Improvements
+
+1. Add indexes on:
+
+   * student_id
+   * is_read
+   * created_at
+
+2. Partition notification tables by date.
+
+3. Use read replicas for heavy read workloads.
+
+4. Archive old notifications.
+
+### SQL vs NoSQL
+
+SQL is preferred because:
+
+* Structured relationships exist.
+* ACID transactions are valuable.
+* Querying unread notifications is easier.
+* Reporting and analytics become simpler.
+
+NoSQL may help at extremely large scale, but PostgreSQL is the better initial choice for this system.
