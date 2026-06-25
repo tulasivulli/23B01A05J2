@@ -1,0 +1,62 @@
+[
+  {
+    "ID": "5cd57ad2-8e41-40f9-ac29-7ba4deaca756",
+    "Type": "Placement",
+    "Message": "Alphabet Inc. Class A hiring",
+    "Timestamp": "2026-06-25 08:55:19"
+  },
+  {
+    "ID": "965a007e-97c3-422a-9868-6029edcbed62",
+    "Type": "Placement",
+    "Message": "Advanced Micro Devices Inc. hiring",
+    "Timestamp": "2026-06-25 07:25:10"
+  },
+  {
+    "ID": "33d4fe22-e316-4374-98e4-ac2298249a2f",
+    "Type": "Placement",
+    "Message": "Visa Inc. hiring",
+    "Timestamp": "2026-06-25 05:56:13"
+  },
+  {
+    "ID": "3427aa69-2cff-43c0-8b50-9805664eab97",
+    "Type": "Placement",
+    "Message": "Marvell Technology Inc. hiring",
+    "Timestamp": "2026-06-24 19:57:52"
+  },
+  {
+    "ID": "79d20ddc-f963-4a48-907a-50b77f8105ae",
+    "Type": "Placement",
+    "Message": "Amazon.com Inc. hiring",
+    "Timestamp": "2026-06-24 18:25:46"
+  },
+  {
+    "ID": "5b4da4cd-dd8b-4b95-bbe7-aa950f232c64",
+    "Type": "Placement",
+    "Message": "TSMC hiring",
+    "Timestamp": "2026-06-24 17:26:49"
+  },
+  {
+    "ID": "12af8fef-6c6f-4b34-ad7f-1c6720fa2475",
+    "Type": "Placement",
+    "Message": "PayPal Holdings Inc. hiring",
+    "Timestamp": "2026-06-24 15:25:28"
+  },
+  {
+    "ID": "943a9d03-3edf-416b-9260-92c29931a7e7",
+    "Type": "Placement",
+    "Message": "Advanced Micro Devices Inc. hiring",
+    "Timestamp": "2026-06-24 13:57:07"
+  },
+  {
+    "ID": "c891c288-db03-46ba-b462-b2b831ac9acc",
+    "Type": "Placement",
+    "Message": "Amgen Inc. hiring",
+    "Timestamp": "2026-06-24 12:55:37"
+  },
+  {
+    "ID": "06b4c569-23d1-4765-a981-5abed12a51ec",
+    "Type": "Placement",
+    "Message": "Amgen Inc. hiring",
+    "Timestamp": "2026-06-24 11:26:58"
+  }
+]
