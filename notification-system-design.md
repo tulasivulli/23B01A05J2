@@ -214,3 +214,49 @@ SQL is preferred because:
 * Reporting and analytics become simpler.
 
 NoSQL may help at extremely large scale, but PostgreSQL is the better initial choice for this system.
+
+## Stage 3
+
+### Problem with Current Query
+
+```sql
+SELECT * 
+FROM notifications
+WHERE studentID = 1042
+AND isRead = false
+ORDER BY createdAt DESC;
+```
+
+The query may become slow because:
+
+1. The notifications table contains millions of records.
+2. Filtering and sorting require scanning a large dataset.
+3. Missing indexes increase execution time.
+
+### Recommended Index
+
+```sql
+CREATE INDEX idx_student_read_created
+ON notifications(studentID, isRead, createdAt DESC);
+```
+
+This helps because:
+
+* studentID is filtered first.
+* isRead is filtered second.
+* createdAt ordering can use the index.
+
+### Is Adding Only One Index Enough?
+
+Not always.
+
+As data grows further, additional strategies such as partitioning, read replicas, and caching may be required.
+
+### Query for Students Receiving Placement Notifications in Last 7 Days
+
+```sql
+SELECT DISTINCT studentID
+FROM notifications
+WHERE notificationType = 'Placement'
+AND createdAt >= NOW() - INTERVAL '7 days';
+```
