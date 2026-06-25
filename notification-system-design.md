@@ -260,3 +260,55 @@ FROM notifications
 WHERE notificationType = 'Placement'
 AND createdAt >= NOW() - INTERVAL '7 days';
 ```
+
+## Stage 4
+
+### Supporting 10 Million Students
+
+To support 10 million students efficiently:
+
+1. Use database sharding based on student ID.
+2. Use read replicas for read-heavy workloads.
+3. Introduce Redis caching for frequently accessed notifications.
+4. Store notification history separately from active notifications.
+5. Use load balancers to distribute incoming requests.
+
+### Architecture
+
+Client → Load Balancer → API Servers → Cache Layer → Database Cluster
+
+### Benefits
+
+* High availability
+* Better scalability
+* Reduced database load
+* Faster notification retrieval
+
+## Stage 5
+
+### Notify All Students
+
+Sending notifications directly to 10 million students synchronously would be inefficient.
+
+### Recommended Solution
+
+Use an event-driven architecture.
+
+1. Admin creates notification.
+2. Notification is published to a message queue.
+3. Worker services consume messages.
+4. Workers distribute notifications in batches.
+5. Notifications are stored and delivered asynchronously.
+
+### Technologies
+
+* Apache Kafka
+* RabbitMQ
+* AWS SQS
+
+### Advantages
+
+* Reliable delivery
+* Horizontal scaling
+* Fault tolerance
+* Reduced response time for administrators
