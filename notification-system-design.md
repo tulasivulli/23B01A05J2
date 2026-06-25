@@ -312,3 +312,48 @@ Use an event-driven architecture.
 * Horizontal scaling
 * Fault tolerance
 * Reduced response time for administrators
+
+## Stage 6
+
+### Goal
+
+Fetch the 10 most recent notifications for a student.
+
+### SQL Query
+
+```sql
+SELECT
+    notification_id,
+    type,
+    message,
+    is_read,
+    created_at
+FROM student_notifications
+WHERE student_id = ?
+ORDER BY created_at DESC
+LIMIT 10;
+```
+
+### Optimization Techniques
+
+1. Create an index on:
+
+```sql
+CREATE INDEX idx_student_created
+ON student_notifications(student_id, created_at DESC);
+```
+
+2. Retrieve only required columns instead of using `SELECT *`.
+
+3. Use pagination for larger result sets.
+
+4. Cache frequently accessed notifications using Redis.
+
+### Complexity
+
+* Without index: O(N)
+* With index: O(log N)
+
+### Expected Result
+
+The query efficiently returns the latest 10 notifications for a student while minimizing database load and response time.
